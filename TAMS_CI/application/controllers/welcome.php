@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//include '../models/DaoLocation.php';
 
 class Welcome extends CI_Controller {
 
@@ -17,9 +18,48 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	
+	function Welcome(){
+		parent::__construct();
+		
+		// load library
+		//$this->load->library(array('table','validation'));
+		
+		// load helper
+		//$this->load->helper('url');
+		
+		// load model
+		$this->load->model('DaoProducts');
+	}
+	
 	public function index()
 	{
 		$this->load->view('welcome_message');
+	}
+	
+	public function test() {
+
+    //$Dao = new DaoLocation();
+    $query = $this->db->query('SELECT * FROM tams.location');//$Dao->findAll();
+    echo test;
+		foreach ($query->result() as $row)
+		{
+			echo $row->City;
+			echo $row->Street;
+			echo $row->Coordinates;
+			echo '</br>';
+		}
+		
+	$persons = $this->DaoProducts->get_paged_list(10, 0)->result();
+	
+	foreach ($persons as $person){
+		echo $person->idProducts , ' ';
+		echo $person->Name , ' ';
+		echo $person->Description, ' ';
+		echo $person->Price, ' ';
+		echo $person->Image, ' ';
+		echo '</br>';
+	}
 	}
 }
 
