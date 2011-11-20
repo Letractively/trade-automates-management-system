@@ -1,0 +1,52 @@
+<LINK REL=StyleSheet HREF='<?php echo base_url()?>resources/styles.css' TYPE="text/css" MEDIA=screen>
+
+<header class="mainH">
+    <hgroup>
+        <h1>Система керування торговими автоматами</h1>
+        <h2>СКТА</h2>
+    </hgroup>
+</header>
+ 
+<nav id=global>
+    <ul>
+        <li><a href="#">Головна</a></li>
+        <li id=about >
+			<a href="#">Про нас</a>
+			<ul id=subMenu>
+					<li><a href=#>Про нас</a></li>
+					<li><a href=#>Контакти</a></li>
+					<li><a href=#>Зворотній звязок</a></li>
+				</ul>
+		</li>
+        <li><a href="#">Торгові автомати</a></li>
+    </ul>
+</nav>
+ 
+<div id=content>
+
+	<article>
+		<header>
+			<time datetime="2011-04-26" pubdate>
+				<span>Лис</span> 15
+			</time>
+			<h1>
+				<a href="#" title="Ссылка на новость" rel="bookmark">
+					Заголовок новини
+				</a>
+			</h1>
+		</header>
+		<p>Тіло новини (сюди поміщається основна інформація)</p>
+		<!--
+		<section>
+			<header>
+				<h1>Что думает общественность</h1>
+			</header>
+			<p>В реальности существует только Ubuntu с таким странным именем "Зайцелоп".</p>
+		</section>
+		-->
+	</article>
+</div>
+ 
+<footer>
+    <p>&copy; 2011 SPR-1. All Rights Reserved.</p>
+</footer>
