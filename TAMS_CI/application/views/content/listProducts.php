@@ -11,7 +11,8 @@
 			</a>
 		</h1>
 		<p>
-		<table border="1">
+		<table>
+			 <thead>
 			 <tr>
 			 <th>ID</th>
 			 <th>Name</th>
@@ -19,6 +20,8 @@
 			 <th>Price</th>
 			 <th>Image</th>
  			</tr>
+ 			</thead>
+ 			<tbody>
 		<?php   foreach ($persons as $person){ 
 					echo '<tr>';
 					echo '<th>', $person->idProducts , '</th>';
@@ -29,6 +32,7 @@
 					echo '</tr>';
 				}
 			?>
+			</tbody>
 			</table>
 		</p>
 	</header>
