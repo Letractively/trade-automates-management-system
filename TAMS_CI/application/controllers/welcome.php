@@ -26,7 +26,7 @@ class Welcome extends CI_Controller {
 		//$this->load->library(array('table','validation'));
 		
 		// load helper
-		//$this->load->helper('url');
+		$this->load->helper('url');
 		
 		// load model
 		$this->load->model('DaoProducts');
@@ -34,32 +34,36 @@ class Welcome extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('index');
 	}
 	
 	public function test() {
 
     //$Dao = new DaoLocation();
-    $query = $this->db->query('SELECT * FROM tams.location');//$Dao->findAll();
-    echo test;
-		foreach ($query->result() as $row)
-		{
-			echo $row->City;
-			echo $row->Street;
-			echo $row->Coordinates;
-			echo '</br>';
-		}
-		
+//    $query = $this->db->query('SELECT * FROM tams.location');//$Dao->findAll();
+//    echo test;
+//		foreach ($query->result() as $row)
+//		{
+//			echo $row->City;
+//			echo $row->Street;
+//			echo $row->Coordinates;
+//			echo '</br>';
+//		}
+//		
 	$persons = $this->DaoProducts->get_paged_list(10, 0)->result();
-	
-	foreach ($persons as $person){
-		echo $person->idProducts , ' ';
-		echo $person->Name , ' ';
-		echo $person->Description, ' ';
-		echo $person->Price, ' ';
-		echo $person->Image, ' ';
-		echo '</br>';
-	}
+//	
+//	foreach ($persons as $person){
+//		echo $person->idProducts , ' ';
+//		echo $person->Name , ' ';
+//		echo $person->Description, ' ';
+//		echo $person->Price, ' ';
+//		echo $person->Image, ' ';
+//		echo '</br>';
+//	}
+
+		$charDiv = $this->load->view( 'content/listProducts', array( 'persons' => $persons ), TRUE );
+		$this->load->view( 'mainFrame', array( 'content' => $charDiv ) );
+		//$this->load->view('index');
 	}
 }
 
