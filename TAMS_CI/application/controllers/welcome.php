@@ -19,6 +19,8 @@ class Welcome extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	
+	private $limit = 5;
+	
 	function Welcome(){
 		parent::__construct();
 		
@@ -37,8 +39,21 @@ class Welcome extends CI_Controller {
 		$this->load->view('index');
 	}
 	
-	public function test() {
+	public function test($offset = 0) {
 
+		// offset
+		$uri_segment = 3;
+		$offset = $this->uri->segment($uri_segment);
+		
+		// generate pagination
+		$this->load->library('pagination');
+		$config['base_url'] = site_url('welcome/test/');
+ 		$config['total_rows'] = $this->DaoProducts->count_all();
+ 		$config['per_page'] = $this->limit;
+		$config['uri_segment'] = $uri_segment;
+		$this->pagination->initialize($config);
+		$data['pagination'] = $this->pagination->create_links();
+		
     //$Dao = new DaoLocation();
 //    $query = $this->db->query('SELECT * FROM tams.location');//$Dao->findAll();
 //    echo test;
@@ -50,7 +65,7 @@ class Welcome extends CI_Controller {
 //			echo '</br>';
 //		}
 //		
-	$persons = $this->DaoProducts->get_paged_list(10, 0)->result();
+	$data['persons'] = $this->DaoProducts->get_paged_list($this->limit, $offset)->result();
 //	
 //	foreach ($persons as $person){
 //		echo $person->idProducts , ' ';
@@ -61,7 +76,7 @@ class Welcome extends CI_Controller {
 //		echo '</br>';
 //	}
 
-		$charDiv = $this->load->view( 'content/listProducts', array( 'persons' => $persons ), TRUE );
+		$charDiv = $this->load->view( 'content/listProducts', $data , TRUE );
 		$this->load->view( 'mainFrame', array( 'content' => $charDiv ) );
 		//$this->load->view('index');
 	}

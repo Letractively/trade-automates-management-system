@@ -9,7 +9,7 @@
  
 <nav id=global>
     <ul>
-        <li><a href="#">Головна</a></li>
+        <li><a href="<?php echo base_url()?>">Головна</a></li>
         <li id=about >
 			<a href="#">Про нас</a>
 			<ul id=subMenu>

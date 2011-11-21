@@ -56,7 +56,12 @@ table thead{
 	    border-top-right-radius:5px;
 	}
  
+#pagination {
+	text-align: left;
+	margin: 5px;	
+}
  
+/* Main styles */
 html {
 	background-color: #81aeab;
 
@@ -87,11 +92,11 @@ header.mainH {
  
 header h1 {
     font-size: 36px; margin: 0px;
-	color: darkblue;
+	color: #3D2D66;
 }
  
 header h2 {
-    font-size: 18px; margin: 0px; color: gray;
+    font-size: 18px; margin: 0px; color: #4A4161;
     font-style: italic;
 }
  
