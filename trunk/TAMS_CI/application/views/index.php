@@ -9,7 +9,7 @@
  
 <nav id=global>
     <ul>
-        <li><a href="#">Головна</a></li>
+        <li><a href="TAMS_CI/">Головна</a></li>
         <li id=about >
 			<a href="#">Про нас</a>
 			<ul id=subMenu>

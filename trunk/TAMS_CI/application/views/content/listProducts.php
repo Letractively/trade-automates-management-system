@@ -3,39 +3,44 @@
 <article>
 	<header>
 		<time datetime="2011-04-26" pubdate>
-				<span>Лис</span> 15
+				<span><?php date_default_timezone_set('Europe/Kiev'); echo date("M");?></span> 
+				<?php echo date("d");?>
 		</time>
 		<h1>
 			<a href="#"  rel="bookmark">
 					Список продуктів
 			</a>
 		</h1>
-		<p>
-		<table>
-			 <thead>
-			 <tr>
-			 <th>ID</th>
-			 <th>Name</th>
-			 <th>Description</th>
-			 <th>Price</th>
-			 <th>Image</th>
- 			</tr>
- 			</thead>
- 			<tbody>
-		<?php   foreach ($persons as $person){ 
-					echo '<tr>';
-					echo '<th>', $person->idProducts , '</th>';
-					echo '<th>', $person->Name , '</th>';
-					echo '<th>', $person->Description, '</th>';
-					echo '<th>', $person->Price, '</th>';
-					echo '<th>', $person->Image, '</th>';
-					echo '</tr>';
-				}
-			?>
-			</tbody>
-			</table>
-		</p>
 	</header>
+		<p>
+			<div id = pagination>
+				<?php echo $pagination?>
+			</div>
+			<table>
+				 <thead>
+				 <tr>
+				 <th>ID</th>
+				 <th>Name</th>
+				 <th>Description</th>
+				 <th>Price</th>
+				 <th>Image</th>
+	 			</tr>
+	 			</thead>
+	 			<tbody>
+			<?php   
+			foreach ($persons as $person){ 
+						echo '<tr>';
+						echo '<th>', $person->idProducts , '</th>';
+						echo '<th>', $person->Name , '</th>';
+						echo '<th>', $person->Description, '</th>';
+						echo '<th>', $person->Price, '</th>';
+						echo '<th>', $person->Image, '</th>';
+						echo '</tr>';
+					}
+				?>
+				</tbody>
+				</table>
+		</p>
 			
 
 </article>
