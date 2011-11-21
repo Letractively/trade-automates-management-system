@@ -9,7 +9,8 @@
  
 <nav id=global>
     <ul>
-        <li><a href="TAMS_CI/">Головна</a></li>
+        <li><a href="<?php echo base_url()?>">Головна</a></li>
+        <li><a href="#">Торгові автомати</a></li>
         <li id=about >
 			<a href="#">Про нас</a>
 			<ul id=subMenu>
@@ -18,7 +19,14 @@
 					<li><a href=#>Зворотній звязок</a></li>
 				</ul>
 		</li>
-        <li><a href="#">Торгові автомати</a></li>
+		<li id=about >
+			<a href="#">All</a>
+			<ul id=subMenu style="left: -160px;">
+					<li><a href="<?php echo base_url()?>index.php/welcome/test">productslist</a></li>
+					<li><a href=#>empty</a></li>
+					<li><a href=#>empty</a></li>
+				</ul>
+		</li>
     </ul>
 </nav>
  
