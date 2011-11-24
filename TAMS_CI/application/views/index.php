@@ -1,22 +1,22 @@
-<LINK REL=StyleSheet HREF='<?php echo base_url()?>resources/styles.css' TYPE="text/css" MEDIA=screen>
+﻿<LINK REL=StyleSheet HREF='<?php echo base_url()?>resources/styles.css' TYPE="text/css" MEDIA=screen>
 
 <header class="mainH">
     <hgroup>
-        <h1>Ñèñòåìà êåðóâàííÿ òîðãîâèìè àâòîìàòàìè</h1>
+        <h1>Система керування торговими автоматами</h1>
         <h2>СКТА</h2>
     </hgroup>
 </header>
  
 <nav id=global>
     <ul>
-        <li><a href="<?php echo base_url()?>">Ãîëîâíà</a></li>
-        <li><a href="#">Òîðãîâ³ àâòîìàòè</a></li>
+        <li><a href="<?php echo base_url()?>">Головна</a></li>
+        <li><a href="#">Торгові автомати</a></li>
         <li id=about >
-			<a href="#">Ïðî íàñ</a>
+			<a href="#">Про нас</a>
 			<ul id=subMenu>
-					<li><a href=#>Ïðî íàñ</a></li>
-					<li><a href=#>Êîíòàêòè</a></li>
-					<li><a href=#>Çâîðîòí³é çâÿçîê</a></li>
+					<li><a href=#>Про нас</a></li>
+					<li><a href=#>Контакти</a></li>
+					<li><a href=#>Зворотній звязок</a></li>
 				</ul>
 		</li>
 		<li id=about >
@@ -35,21 +35,21 @@
 	<article>
 		<header>
 			<time datetime="2011-04-26" pubdate>
-				<span>Ëèñ</span> 15
+				<span>Лис</span> 15
 			</time>
 			<h1>
-				<a href="#" title="Ññûëêà íà íîâîñòü" rel="bookmark">
-					Çàãîëîâîê íîâèíè
+				<a href="#" title="Ссылка на новость" rel="bookmark">
+					Заголовок новини
 				</a>
 			</h1>
 		</header>
-		<p>Ò³ëî íîâèíè (ñþäè ïîì³ùàºòüñÿ îñíîâíà ³íôîðìàö³ÿ)</p>
+		<p>Тіло новини (сюди поміщається основна інформація)</p>
 		<!--
 		<section>
 			<header>
-				<h1>×òî äóìàåò îáùåñòâåííîñòü</h1>
+				<h1>Что думает общественность</h1>
 			</header>
-			<p>Â ðåàëüíîñòè ñóùåñòâóåò òîëüêî Ubuntu ñ òàêèì ñòðàííûì èìåíåì "Çàéöåëîï".</p>
+			<p>В реальности существует только Ubuntu с таким странным именем "Зайцелоп".</p>
 		</section>
 		-->
 	</article>

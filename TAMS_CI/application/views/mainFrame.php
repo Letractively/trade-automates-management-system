@@ -1,25 +1,24 @@
-<<!DOCTYPE LINK PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+п»ї<<!DOCTYPE LINK PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
 <LINK REL=StyleSheet HREF="<?php echo base_url()?>resources/styles.css" TYPE="text/css" MEDIA=screen>
 
 <header class="mainH">
     <hgroup>
-        <h1>Система керування торговими автоматами</h1>
-        <h2>СКТА</h2>
+        <h1>РЎРёСЃС‚РµРјР° РєРµСЂСѓРІР°РЅРЅСЏ С‚РѕСЂРіРѕРІРёРјРё Р°РІС‚РѕРјР°С‚Р°РјРё</h1>
+        <h2>РЎРљРўРђ</h2>
     </hgroup>
 </header>
  
 <nav id=global>
     <ul>
-        <li><a href="<?php echo base_url()?>">Головна</a></li>
-        <li><a href="#">Торгові автомати</a></li>
+        <li><a href="<?php echo base_url()?>">Р“РѕР»РѕРІРЅР°</a></li>
+        <li><a href="#">РўРѕСЂРіРѕРІС– Р°РІС‚РѕРјР°С‚Рё</a></li>
         <li id=about >
-			<a href="#">Про нас</a>
+			<a href="#">РџСЂРѕ РЅР°СЃ</a>
 			<ul id=subMenu>
-					<li><a href=#>Про нас</a></li>
-					<li><a href=#>Контакти</a></li>
-					<li><a href=#>Зворотній звязок</a></li>
+					<li><a href=#>РџСЂРѕ РЅР°СЃ</a></li>
+					<li><a href=#>РљРѕРЅС‚Р°РєС‚Рё</a></li>
+					<li><a href=#>Р—РІРѕСЂРѕС‚РЅС–Р№ Р·РІСЏР·РѕРє</a></li>
 				</ul>
 		</li>
 		<li id=about >
