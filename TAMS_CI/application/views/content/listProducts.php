@@ -1,4 +1,4 @@
-<!DOCTYPE article PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+п»ї<!DOCTYPE article PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <article>
 	<header>
@@ -8,7 +8,7 @@
 		</time>
 		<h1>
 			<a href="#"  rel="bookmark">
-					Список продуктів
+					РЎРїРёСЃРѕРє РїСЂРѕРґСѓРєС‚С–РІ
 			</a>
 		</h1>
 	</header>
