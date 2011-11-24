@@ -1,3 +1,6 @@
+<<!DOCTYPE LINK PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
 <LINK REL=StyleSheet HREF="<?php echo base_url()?>resources/styles.css" TYPE="text/css" MEDIA=screen>
 
 <header class="mainH">
