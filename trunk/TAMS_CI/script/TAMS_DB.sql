@@ -3,12 +3,14 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DROP SCHEMA IF EXISTS `tams` ;
-CREATE SCHEMA IF NOT EXISTS `tams` DEFAULT CHARACTER SET latin1 ;
+CREATE SCHEMA IF NOT EXISTS `tams` DEFAULT CHARACTER SET utf8;
 USE `tams` ;
 
 -- -----------------------------------------------------
 -- Table `tams`.`location`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`location` ;
+
 CREATE  TABLE IF NOT EXISTS `tams`.`location` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `City` VARCHAR(45) NULL DEFAULT NULL ,
@@ -16,13 +18,15 @@ CREATE  TABLE IF NOT EXISTS `tams`.`location` (
   `Coordinates` VARCHAR(45) NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
-AUTO_INCREMENT = 10
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `tams`.`products`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`products` ;
+
 CREATE  TABLE IF NOT EXISTS `tams`.`products` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(45) NULL DEFAULT NULL ,
@@ -31,25 +35,27 @@ CREATE  TABLE IF NOT EXISTS `tams`.`products` (
   `Image` BINARY(1) NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
-AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `tams`.`roles`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`roles` ;
+
 CREATE  TABLE IF NOT EXISTS `tams`.`roles` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `RoleName` VARCHAR(45) NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `tams`.`status`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`status` ;
+
 CREATE  TABLE IF NOT EXISTS `tams`.`status` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `NoGoods` TINYINT(1) NULL DEFAULT NULL ,
@@ -63,6 +69,8 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 -- Table `tams`.`users`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`users` ;
+
 CREATE  TABLE IF NOT EXISTS `tams`.`users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(45) NULL DEFAULT NULL ,
@@ -80,13 +88,14 @@ CREATE  TABLE IF NOT EXISTS `tams`.`users` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `tams`.`trade automats`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`trade automats` ;
+
 CREATE  TABLE IF NOT EXISTS `tams`.`trade automats` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `Type` VARCHAR(45) NULL DEFAULT NULL ,
@@ -130,6 +139,8 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 -- Table `tams`.`tradelist`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`tradelist` ;
+
 CREATE  TABLE IF NOT EXISTS `tams`.`tradelist` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `ProductId` INT(11) NULL DEFAULT NULL ,
@@ -155,8 +166,10 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 -- Table `tams`.`tasks`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`tasks` ;
+
 CREATE  TABLE IF NOT EXISTS `tams`.`tasks` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `TradeAutomatID` INT NULL ,
   `UserID` INT NULL ,
   `Description` VARCHAR(100) NULL ,
@@ -172,6 +185,34 @@ CREATE  TABLE IF NOT EXISTS `tams`.`tasks` (
   CONSTRAINT `us_fk`
     FOREIGN KEY (`UserID` )
     REFERENCES `tams`.`users` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `tams`.`transactions`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`transactions` ;
+
+CREATE  TABLE IF NOT EXISTS `tams`.`transactions` (
+  `idtransactions` INT NOT NULL AUTO_INCREMENT ,
+  `product` INT NULL ,
+  `amount` INT NULL ,
+  `receivedMoney` DOUBLE NULL ,
+  `change` DOUBLE NULL ,
+  `automat` INT NULL ,
+  PRIMARY KEY (`idtransactions`) ,
+  INDEX `prod_fk` (`product` ASC) ,
+  INDEX `autom_fk` (`automat` ASC) ,
+  CONSTRAINT `prod_fk`
+    FOREIGN KEY (`product` )
+    REFERENCES `tams`.`products` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `autom_fk`
+    FOREIGN KEY (`automat` )
+    REFERENCES `tams`.`trade automats` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
