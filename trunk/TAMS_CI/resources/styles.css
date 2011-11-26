@@ -39,15 +39,15 @@ table thead{
 	        linear,
 	        left bottom,
 	        left top,
-	        color-stop(0.02, rgb(123,192,67)),
-	        color-stop(0.51, rgb(139,198,66)),
-	        color-stop(0.87, rgb(158,217,41))
+	        color-stop(0.02, #A35D5D),
+	        color-stop(0.51, #A35D5D),
+	        color-stop(0.87, #A35D5D)
 	        );
 	    background: -moz-linear-gradient(
 	        center bottom,
-	        rgb(123,192,67) 2%,
-	        rgb(139,198,66) 51%,
-	        rgb(158,217,41) 87%
+	        #A35D5D 2%,
+	        #A35D5D 51%,
+	        #A35D5D 87%
 	        );
 	    -webkit-border-top-left-radius:5px;
 	    -webkit-border-top-right-radius:5px;
@@ -141,9 +141,9 @@ nav#global ul li a:hover {
 nav#global ul li #subMenu {
 	position: absolute;
 	top: 35px;
-	left: -387px;
+	left: -270px;
 	-moz-transform: translate(0, 11px);
-	-webkit-transform: translate(232px, 0);
+	-webkit-transform: translateX(0%);
 	background: #970000;
 	height: 0;
 	z-index: -1;

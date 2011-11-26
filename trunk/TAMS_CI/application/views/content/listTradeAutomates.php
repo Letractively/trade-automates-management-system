@@ -1,4 +1,4 @@
-﻿<!DOCTYPE article PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE article PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <article>
 	<header>
@@ -28,13 +28,13 @@
 	 			</thead>
 	 			<tbody>
 			<?php   
-			foreach ($products as $product){ 
+			foreach ($persons as $person){ 
 						echo '<tr>';
-						echo '<th>', $product->id , '</th>';
-						echo '<th>', $product->Name , '</th>';
-						echo '<th>', $product->Description, '</th>';
-						echo '<th>', $product->Price, '</th>';
-						echo '<th>', $product->Image, '</th>';
+						echo '<th>', $person->id , '</th>';
+						echo '<th>', $person->Name , '</th>';
+						echo '<th>', $person->Description, '</th>';
+						echo '<th>', $person->Price, '</th>';
+						echo '<th>', $person->Image, '</th>';
 						echo '</tr>';
 					}
 				?>
