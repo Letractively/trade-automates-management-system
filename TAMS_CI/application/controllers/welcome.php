@@ -65,7 +65,7 @@ class Welcome extends CI_Controller {
 //			echo '</br>';
 //		}
 //		
-	$data['persons'] = $this->DaoProducts->get_paged_list($this->limit, $offset)->result();
+	$data['products'] = $this->DaoProducts->get_paged_list($this->limit, $offset)->result();
 //	
 //	foreach ($persons as $person){
 //		echo $person->idProducts , ' ';
