@@ -21,6 +21,15 @@ class Welcome extends CI_Controller {
 	
 	private $limit = 5;
 	
+	public function __construct()
+	{
+		session_start();
+		parent::__construct();
+		if ( !isset($_SESSION['username'])) {
+			redirect('admin');
+		}
+	}
+
 	function Welcome(){
 		parent::__construct();
 		
