@@ -196,13 +196,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `tams`.`transactions` ;
 
 CREATE  TABLE IF NOT EXISTS `tams`.`transactions` (
-  `idtransactions` INT NOT NULL AUTO_INCREMENT ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `product` INT NULL ,
   `amount` INT NULL ,
   `receivedMoney` DOUBLE NULL ,
   `change` DOUBLE NULL ,
   `automat` INT NULL ,
-  PRIMARY KEY (`idtransactions`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `prod_fk` (`product` ASC) ,
   INDEX `autom_fk` (`automat` ASC) ,
   CONSTRAINT `prod_fk`
