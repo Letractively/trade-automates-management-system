@@ -21,10 +21,15 @@ class Welcome extends CI_Controller {
 	
 	private $limit = 5;
 	
-
+        
 	function Welcome(){
 		parent::__construct();
-		
+
+		session_start();
+		if ( !isset($_SESSION['username'])) {
+			redirect('admin');
+		}
+
 		// load library
 		//$this->load->library(array('table','validation'));
 		
