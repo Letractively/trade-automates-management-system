@@ -23,15 +23,15 @@ insert into status(NoGoods,FullCashStorage, Fault) values(0,1,1);
 insert into status(NoGoods,FullCashStorage, Fault) values(1,0,0);
 insert into status(NoGoods,FullCashStorage, Fault) values(0,1,0);
 
--- users ---
+-- users ---password is  -----qwerty------
 insert into users(Name,Surname,Role,Login,Password,Email,Balance) values('admin','admin',1, 'admin'
-,'qwerty','admin@gmail.com', 1000.0);
+,'b1b3773a05c0ed0176787a4f1574ff0075f7521e','admin@gmail.com', 1000.0);
 insert into users(Name,Surname,Role,Login,Password,Email,Balance) values('admin','admin',2, 'admin'
-,'qwerty','admin@gmail.com', 1000.0);
+,'b1b3773a05c0ed0176787a4f1574ff0075f7521e','admin@gmail.com', 1000.0);
 insert into users(Name,Surname,Role,Login,Password,Email,Balance) values('admin','admin',2, 'admin'
-,'qwerty','admin@gmail.com', 1000.0);
+,'b1b3773a05c0ed0176787a4f1574ff0075f7521e','admin@gmail.com', 1000.0);
 insert into users(Name,Surname,Role,Login,Password,Email,Balance) values('admin','admin',3, 'admin'
-,'qwerty','admin@gmail.com', 1000.0);
+,'b1b3773a05c0ed0176787a4f1574ff0075f7521e','admin@gmail.com', 1000.0); 
 
 
 -- trade automats --
