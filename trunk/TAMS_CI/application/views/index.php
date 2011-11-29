@@ -1,4 +1,6 @@
-﻿<LINK REL=StyleSheet HREF='<?php echo base_url()?>resources/styles.css' TYPE="text/css" MEDIA=screen>
+﻿<!DOCTYPE LINK PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<LINK REL=StyleSheet HREF="<?php echo base_url()?>resources/styles.css" TYPE="text/css" MEDIA=screen>
 
 <header class="mainH">
     <hgroup>
@@ -23,7 +25,10 @@
 			<a href="#">All</a>
 			<ul id=subMenu style="left: -160px;">
 					<li><a href="<?php echo base_url()?>index.php/welcome/test">productslist</a></li>
-					<li><a href=#>empty</a></li>
+					<li><a href="<?php echo base_url()?>index.php/welcome/Locations">Locations</a></li>
+					<li><a href="<?php echo base_url()?>index.php/welcome/Roles">Roles</a></li>
+					<li><a href="<?php echo base_url()?>index.php/welcome/Users">Users</a></li>
+					<li><a href="<?php echo base_url()?>index.php/welcome/Transactions">Transactions</a></li>
 					<li><a href=#>empty</a></li>
 				</ul>
 		</li>
