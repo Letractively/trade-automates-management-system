@@ -41,7 +41,7 @@ class Admin extends CI_Controller {
 			{
 				//person has an account
 				$_SESSION['username'] = $this->input->post('login');
-				redirect('http://www.google.com');
+				redirect( base_url() );
 			}
 			else
 			{
