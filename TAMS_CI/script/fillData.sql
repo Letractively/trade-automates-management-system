@@ -34,11 +34,11 @@ insert into users(Name,Surname,Role,Login,Password,Email,Balance) values('admin'
 ,'b1b3773a05c0ed0176787a4f1574ff0075f7521e','admin@gmail.com', 1000.0); 
 
 
--- trade automats --
-insert into `trade automats`(Type,Owner,Location,Status,Cash,Service,SellAmount,RegistrationDate, IsWorking) values('Drinks seller',2,1, 1,345.6,4, 1000.0,'2003-01-16 23:12:01',1);
-insert into `trade automats`(Type,Owner,Location,Status,Cash,Service,SellAmount,RegistrationDate, IsWorking) values('Drinks seller',2,1, 1,345.6,4, 1000.0,'2003-01-16 23:12:01',1);
-insert into `trade automats`(Type,Owner,Location,Status,Cash,Service,SellAmount,RegistrationDate, IsWorking) values('Drinks seller',2,1, 1,345.6,4, 1000.0,'2003-01-16 23:12:01',1);
-insert into `trade automats`(Type,Owner,Location,Status,Cash,Service,SellAmount,RegistrationDate, IsWorking) values('Drinks seller',2,1, 1,345.6,4, 1000.0,'2003-01-16 23:12:01',1);
+-- trade_tams.trade_automatsautomats --
+insert into trade_automats(Type,Owner,Location,Status,Cash,Service,SellAmount,RegistrationDate, IsWorking) values('Drinks seller',2,1, 1,345.6,4, 1000.0,'2003-01-16 23:12:01',1);
+insert into trade_automats(Type,Owner,Location,Status,Cash,Service,SellAmount,RegistrationDate, IsWorking) values('Drinks seller',2,1, 1,345.6,4, 1000.0,'2003-01-16 23:12:01',1);
+insert into trade_automats(Type,Owner,Location,Status,Cash,Service,SellAmount,RegistrationDate, IsWorking) values('Drinks seller',2,1, 1,345.6,4, 1000.0,'2003-01-16 23:12:01',1);
+insert into trade_automats(Type,Owner,Location,Status,Cash,Service,SellAmount,RegistrationDate, IsWorking) values('Drinks seller',2,1, 1,345.6,4, 1000.0,'2003-01-16 23:12:01',1);
 
 
 -- tradelist --

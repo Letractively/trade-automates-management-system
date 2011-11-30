@@ -29,6 +29,7 @@
 					<li><a href="<?php echo base_url()?>index.php/welcome/Roles">Roles</a></li>
 					<li><a href="<?php echo base_url()?>index.php/welcome/Users">Users</a></li>
 					<li><a href="<?php echo base_url()?>index.php/welcome/Transactions">Transactions</a></li>
+					<li><a href="<?php echo base_url()?>index.php/welcome/trade_automates">Trade Automates</a></li>
 					<li><a href=#>empty</a></li>
 				</ul>
 		</li>
