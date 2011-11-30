@@ -23,16 +23,26 @@
 		</li>
 		<li id=about >
 			<a href="#">All</a>
-			<ul id=subMenu style="left: -160px;">
-					<li><a href="<?php echo base_url()?>index.php/welcome/test">productslist</a></li>
-					<li><a href="<?php echo base_url()?>index.php/welcome/Locations">Locations</a></li>
-					<li><a href="<?php echo base_url()?>index.php/welcome/Roles">Roles</a></li>
-					<li><a href="<?php echo base_url()?>index.php/welcome/Users">Users</a></li>
-					<li><a href="<?php echo base_url()?>index.php/welcome/Transactions">Transactions</a></li>
-					<li><a href="<?php echo base_url()?>index.php/welcome/trade_automates">Trade Automates</a></li>
+			<ul id=subMenu style="left: -320px;">
+					<li><a href="<?php echo base_url()?>index.php/admin/test">productslist</a></li>
+					<li><a href="<?php echo base_url()?>index.php/admin/Locations">Locations</a></li>
+					<li><a href="<?php echo base_url()?>index.php/admin/Roles">Roles</a></li>
+					<li><a href="<?php echo base_url()?>index.php/admin/Users">Users</a></li>
+					<li><a href="<?php echo base_url()?>index.php/admin/Transactions">Transactions</a></li>
+					<li><a href="<?php echo base_url()?>index.php/admin/trade_automates">Trade Automates</a></li>
 					<li><a href=#>empty</a></li>
 				</ul>
 		</li>
+		<?php //session_start();
+		if ( !isset($_SESSION['username'])) {
+			echo '<li id=login ><a href="', base_url(), 
+			'index.php/login ">Увійти</a></li>';
+		}
+		else {
+			echo '<li id=login ><a href="', base_url(), 
+			'index.php/login/logout ">Вийти</a></li>';
+		}
+		?>
     </ul>
 </nav>
  
