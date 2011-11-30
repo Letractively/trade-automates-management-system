@@ -8,7 +8,7 @@
 		</time>
 		<h1>
 			<a href="#"  rel="bookmark">
-					Список продуктів
+					All trade automats
 			</a>
 		</h1>
 	</header>
@@ -16,27 +16,51 @@
 			<div id = pagination>
 				<?php echo $pagination?>
 			</div>
+
 			<table>
 				 <thead>
 				 <tr>
-				 <th>ID</th>
-				 <th>Name</th>
-				 <th>Description</th>
-				 <th>Price</th>
-				 <th>Image</th>
+					 <th>ID</th>
+					 <th>Type</th>
+					 <th>Owner ID</th>
+					 <th>Owner Name</th>
+					 <th>Location ID</th>
+					 <th>City</th>
+					 <th>Cash</th>
+					 <th>Service</th>
+					 <th>Sell amount</th>
+					 <th>Registration date</th>
+					 <th>Status ID</th>
+					 <th>Is Working</th>
+					 <th>No Goods</th>
+					 <th>Full cash storage</th>
+					 <th>Fault</th>
 	 			</tr>
 	 			</thead>
 	 			<tbody>
 			<?php   
-			foreach ($persons as $person){ 
+			foreach ($trade_automates as $item)
+			{ 
+			
 						echo '<tr>';
-						echo '<th>', $person->id , '</th>';
-						echo '<th>', $person->Name , '</th>';
-						echo '<th>', $person->Description, '</th>';
-						echo '<th>', $person->Price, '</th>';
-						echo '<th>', $person->Image, '</th>';
+						echo '<th>', $item->TradeAutomatID, '</th>';
+						echo '<th>', $item->Type, '</th>';
+						echo '<th>', $item->OwnerID, '</th>';
+						echo '<th>', $item->OwnerName, '</th>';
+						echo '<th>', $item->LocationID, '</th>';
+						echo '<th>', $item->City, '</th>';
+						echo '<th>', $item->Cash, '</th>';
+						echo '<th>', $item->Service, '</th>';
+						echo '<th>', $item->SellAmount, '</th>';
+						echo '<th>', $item->RegistrationDate, '</th>';
+						echo '<th>', $item->StatusID, '</th>';
+						echo '<th>', $item->IsWorking, '</th>';
+						echo '<th>', $item->NoGoods, '</th>';
+						echo '<th>', $item->FullCashStorage, '</th>';
+						echo '<th>', $item->Fault, '</th>';
 						echo '</tr>';
-					}
+						
+			}
 				?>
 				</tbody>
 				</table>

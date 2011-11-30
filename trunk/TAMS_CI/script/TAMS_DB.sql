@@ -92,51 +92,6 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `tams`.`trade automats`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `tams`.`trade automats` ;
-
-CREATE  TABLE IF NOT EXISTS `tams`.`trade automats` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `Type` VARCHAR(45) NULL DEFAULT NULL ,
-  `Owner` INT(11) NULL DEFAULT NULL ,
-  `Location` INT(11) NULL DEFAULT NULL ,
-  `Status` INT(11) NULL DEFAULT NULL ,
-  `Cash` DOUBLE NULL DEFAULT '0' ,
-  `Service` INT(11) NULL DEFAULT NULL ,
-  `SellAmount` DOUBLE NULL DEFAULT '0' ,
-  `RegistrationDate` DATETIME NULL DEFAULT NULL ,
-  `IsWorking` TINYINT(1) NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `OwnerUser` (`Owner` ASC) ,
-  INDEX `Service` (`Service` ASC) ,
-  INDEX `Status` (`Status` ASC) ,
-  INDEX `Location` (`Location` ASC) ,
-  CONSTRAINT `Location`
-    FOREIGN KEY (`Location` )
-    REFERENCES `tams`.`location` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `OwnerUser`
-    FOREIGN KEY (`Owner` )
-    REFERENCES `tams`.`users` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Service`
-    FOREIGN KEY (`Service` )
-    REFERENCES `tams`.`users` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Status`
-    FOREIGN KEY (`Status` )
-    REFERENCES `tams`.`status` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
 -- Table `tams`.`tradelist`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `tams`.`tradelist` ;
@@ -151,7 +106,7 @@ CREATE  TABLE IF NOT EXISTS `tams`.`tradelist` (
   INDEX `ProductId` (`ProductId` ASC) ,
   CONSTRAINT `AutomatId`
     FOREIGN KEY (`AutomateId` )
-    REFERENCES `tams`.`trade automats` (`id` )
+    REFERENCES `tams`.`trade_automats` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `ProductId`
@@ -179,7 +134,7 @@ CREATE  TABLE IF NOT EXISTS `tams`.`tasks` (
   INDEX `us_fk` (`UserID` ASC) ,
   CONSTRAINT `ta_fk`
     FOREIGN KEY (`TradeAutomatID` )
-    REFERENCES `tams`.`trade automats` (`id` )
+    REFERENCES `tams`.`trade_automats` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `us_fk`
@@ -212,11 +167,56 @@ CREATE  TABLE IF NOT EXISTS `tams`.`transactions` (
     ON UPDATE NO ACTION,
   CONSTRAINT `autom_fk`
     FOREIGN KEY (`automat` )
-    REFERENCES `tams`.`trade automats` (`id` )
+    REFERENCES `tams`.`trade_automats` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `tams`.`trade_automats`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `tams`.`trade automats` ;
+DROP TABLE IF EXISTS `tams`.`trade_automats` ;
+
+CREATE  TABLE IF NOT EXISTS `tams`.`trade_automats` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `Type` VARCHAR(45) NULL DEFAULT NULL ,
+  `Owner` INT(11) NULL DEFAULT NULL ,
+  `Location` INT(11) NULL DEFAULT NULL ,
+  `Status` INT(11) NULL DEFAULT NULL ,
+  `Cash` DOUBLE NULL DEFAULT '0' ,
+  `Service` INT(11) NULL DEFAULT NULL ,
+  `SellAmount` DOUBLE NULL DEFAULT '0' ,
+  `RegistrationDate` DATETIME NULL DEFAULT NULL ,
+  `IsWorking` TINYINT(1) NULL DEFAULT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `OwnerUser` (`Owner` ASC) ,
+  INDEX `Service` (`Service` ASC) ,
+  INDEX `Status` (`Status` ASC) ,
+  INDEX `Location` (`Location` ASC) ,
+  CONSTRAINT `Location`
+    FOREIGN KEY (`Location` )
+    REFERENCES `tams`.`location` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `OwnerUser`
+    FOREIGN KEY (`Owner` )
+    REFERENCES `tams`.`users` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Service`
+    FOREIGN KEY (`Service` )
+    REFERENCES `tams`.`users` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Status` 
+    FOREIGN KEY (`Status` )
+    REFERENCES `tams`.`status` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

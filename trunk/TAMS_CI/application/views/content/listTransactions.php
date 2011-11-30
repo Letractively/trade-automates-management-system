@@ -8,7 +8,7 @@
 		</time>
 		<h1>
 			<a href="#"  rel="bookmark">
-					All registered users
+					All made transactions
 			</a>
 		</h1>
 	</header>

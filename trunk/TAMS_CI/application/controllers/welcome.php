@@ -42,6 +42,7 @@ class Welcome extends CI_Controller {
 		$this->load->model('Roles');
 		$this->load->model('Users');
 		$this->load->model('Transactions');
+		$this->load->model('TradeAutomates');
 	}
 	
 	public function index()
@@ -111,6 +112,16 @@ class Welcome extends CI_Controller {
 		$data['transactions'] = $this->Transactions->get_paged_list($this->limit, $offset)->result();
 
 		$charDiv = $this->load->view( 'content/listTransactions', $data , TRUE );
+		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+	}
+
+	public function trade_automates($offset = 0)
+	{
+		$this->initialize_pagination('welcome/trade_automates/', $this->TradeAutomates);
+		$data['pagination'] = $this->pagination->create_links();
+		$data['trade_automates'] = $this->TradeAutomates->get_paged_list($this->limit, $offset)->result();
+
+		$charDiv = $this->load->view( 'content/listTradeAutomates', $data , TRUE );
 		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
 	}
 
