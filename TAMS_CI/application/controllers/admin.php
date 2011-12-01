@@ -43,6 +43,8 @@ class Admin extends CI_Controller {
 		$this->load->model('Users');
 		$this->load->model('Transactions');
 		$this->load->model('TradeAutomates');
+		$this->load->model('TradeList');
+		$this->load->model('Tasks');
 	}
 	public function initialize_pagination($page_name, $model, $uri_segment=3)
 	{
@@ -118,7 +120,28 @@ class Admin extends CI_Controller {
 		$charDiv = $this->load->view( 'content/listTradeAutomates', $data , TRUE );
 		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
 	}
+	
+	public function trade_list($offset = 0)
+	{
+		$this->initialize_pagination('welcome/trade_list/', $this->TradeList);
+		$data['pagination'] = $this->pagination->create_links();
+		$data['trade_list'] = $this->TradeList->get_paged_list($this->limit, $offset, '1', '1', 'or')->result();
 
+		$charDiv = $this->load->view( 'content/listTradeList', $data , TRUE );
+		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+	}
+
+	public function tasks($offset = 0)
+	{
+		$this->initialize_pagination('welcome/tasks/', $this->Tasks);
+		$data['pagination'] = $this->pagination->create_links();
+		$data['tasks'] = $this->Tasks->get_paged_list($this->limit, $offset)->result();
+
+		$charDiv = $this->load->view( 'content/listTasks', $data , TRUE );
+		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+	}
+
+	
 }
 
 /* End of file admin.php */

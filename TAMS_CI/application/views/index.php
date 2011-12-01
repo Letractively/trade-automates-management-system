@@ -30,6 +30,8 @@
 					<li><a href="<?php echo base_url()?>index.php/admin/Users">Users</a></li>
 					<li><a href="<?php echo base_url()?>index.php/admin/Transactions">Transactions</a></li>
 					<li><a href="<?php echo base_url()?>index.php/admin/trade_automates">Trade Automates</a></li>
+					<li><a href="<?php echo base_url()?>index.php/admin/trade_list">Trade Lists</a></li>
+					<li><a href="<?php echo base_url()?>index.php/admin/tasks">Tasks</a></li>
 					<li><a href=#>empty</a></li>
 				</ul>
 		</li>

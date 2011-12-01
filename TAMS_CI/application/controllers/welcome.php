@@ -22,7 +22,8 @@ class Welcome extends CI_Controller {
 	private $limit = 10;
 	
         
-	function Welcome(){
+	function Welcome()
+	{
 		parent::__construct();
 		session_start();
 
@@ -33,15 +34,8 @@ class Welcome extends CI_Controller {
 		// load helper
 		$this->load->helper('url');
 		
-		// load model
-		$this->load->model('DaoProducts');
-		$this->load->model('Locations');
-		$this->load->model('Roles');
-		$this->load->model('Users');
-		$this->load->model('Transactions');
-		$this->load->model('TradeAutomates');
 	}
-	
+
 	public function index()
 	{
 		$this->load->view('index');
