@@ -16,9 +16,9 @@
         <li id=about >
 			<a href="#">Про нас</a>
 			<ul id=subMenu>
-					<li><a href=#>Про нас</a></li>
-					<li><a href=#>Контакти</a></li>
-					<li><a href=#>Зворотній звязок</a></li>
+					<li><a href="<?php echo base_url()?>index.php/about">Про нас</a></li>
+					<li><a href="<?php echo base_url()?>index.php/about/contacts">Контакти</a></li>
+					<li><a href="<?php echo base_url()?>index.php/about/feedback">Зворотній звязок</a></li>
 				</ul>
 		</li>
 		<li id=about >

@@ -140,8 +140,9 @@ nav#global ul li a:hover {
 
 nav#global ul li #subMenu {
 	position: absolute;
-	top: 35px;
-	left: -270px;
+	top: 35px; 
+	left: -420px;
+	width: 150px;
 	-moz-transform: translate(0, 11px);
 	-webkit-transform: translateX(0%);
 	background: #970000;
@@ -157,9 +158,10 @@ nav#global ul li #subMenu {
 	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ca0000),color-stop(1, #970000));
 }
 nav#global ul li #subMenu li {
+/*	position: relative;*/
 	display: block;
-	text-align: center;
-	margin: 0 auto;
+/*	text-align: center;*/
+/*	margin: 0 auto;*/
 }
 nav#global ul li #subMenu li a {
 	height: 0;
@@ -182,7 +184,11 @@ nav#global ul li #subMenu li a {
 	-moz-border-radius-bottomright: 15px;
 	-webkit-border-bottom-right-radius: 15px;
 }
-
+#login a{
+	position: relative;
+	left: 20%;
+	width: 100px;
+}
 #about a {
 	transition: all 0.3s linear;
 	-o-transition: all 0.3s linear;
