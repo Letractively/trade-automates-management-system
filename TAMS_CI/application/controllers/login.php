@@ -21,6 +21,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 		session_start();
+		$this->load->model('Roles');
 	}
 	public function index()
 	{
@@ -41,6 +42,10 @@ class Login extends CI_Controller {
 			{
 				//person has an account
 				$_SESSION['username'] = $this->input->post('login');
+				$_SESSION['user'] = $res;
+				$_SESSION['role'] = $this->Roles->get_by_id($res->id);
+				//echo $_SESSION['user']->Name;
+				//echo $res->Name;
 				redirect( base_url() );
 			}
 			else
