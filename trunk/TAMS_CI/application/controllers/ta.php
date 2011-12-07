@@ -65,5 +65,9 @@ class Ta extends CI_Controller {
 		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
 	}
 
+	public function details()
+	{
+		
+	}
 
 }

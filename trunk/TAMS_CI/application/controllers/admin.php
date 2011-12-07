@@ -32,6 +32,7 @@ class Admin extends CI_Controller {
 
 		// load library
 		//$this->load->library(array('table','validation'));
+		$this->load->library('form_validation');
 		
 		// load helper
 		$this->load->helper('url');
@@ -63,17 +64,70 @@ class Admin extends CI_Controller {
 	
 	public function test($offset = 0) 
 	{
-		$this->initialize_pagination('welcome/test/', $this->DaoProducts);
+		$this->initialize_pagination('admin/test/', $this->DaoProducts);
 		$data['pagination'] = $this->pagination->create_links();
 		$data['products']  = $this->DaoProducts->get_paged_list($this->limit, $offset)->result();	
 		
 		$charDiv = $this->load->view( 'content/listProducts', $data , TRUE );
 		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
 	}
+	public function addProduct($offset = 0) 
+	{
+//		$this->initialize_pagination('welcome/test/', $this->DaoProducts);
+//		$data['pagination'] = $this->pagination->create_links();
+//		$data['products']  = $this->DaoProducts->get_paged_list($this->limit, $offset)->result();	
+		
+		$charDiv = $this->load->view( 'content/addProduct', $data , TRUE );
+		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+	}
+	
+function saveProduct()
+	{			
+		$this->form_validation->set_rules('name', 'Name', '');			
+		$this->form_validation->set_rules('description', 'Description', '');			
+		$this->form_validation->set_rules('price', 'Price', 'is_numeric');			
+		$this->form_validation->set_rules('image', 'Image', '');
+			
+		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
+	
+		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
+		{
+			$this->load->view('add_form_view');
+		}
+		else // passed validation proceed to post success logic
+		{
+		 	// build array for the model
+			
+			$form_data = array(
+					       	'name' => set_value('name'),
+					       	'description' => set_value('description'),
+					       	'price' => set_value('price'),
+					       	'image' => set_value('image')
+						);
+					
+			// run insert model to write data to db
+		
+			if ($this->DaoProducts->save($form_data) == TRUE) // the information has therefore been successfully saved in the db
+			{
+				redirect('admin/test');   // or whatever logic needs to occur
+			}
+			else
+			{
+			echo 'An error occurred saving your information. Please try again later';
+			// Or whatever error handling is necessary
+			}
+		}
+	}
+	function success()
+	{
+			echo 'this form has been successfully submitted with all validation being passed. All messages or logic here. Please note
+			sessions have not been used and would need to be added in to suit your app';
+	}
+
 	
 	public function locations($offset = 0)
 	{
-		$this->initialize_pagination('welcome/locations/', $this->Locations);
+		$this->initialize_pagination('admin/locations/', $this->Locations);
 		$data['pagination'] = $this->pagination->create_links();
 		$data['locations'] = $this->Locations->get_paged_list($this->limit, $offset)->result();
 
@@ -83,7 +137,7 @@ class Admin extends CI_Controller {
 	
 	public function roles($offset = 0)
 	{
-		$this->initialize_pagination('welcome/roles/', $this->Roles);
+		$this->initialize_pagination('admin/roles/', $this->Roles);
 		$data['pagination'] = $this->pagination->create_links();
 		$data['roles'] = $this->Roles->get_paged_list($this->limit, $offset)->result();
 
@@ -93,7 +147,7 @@ class Admin extends CI_Controller {
 	
 	public function users($offset = 0)
 	{
-		$this->initialize_pagination('welcome/users/', $this->Users);
+		$this->initialize_pagination('admin/users/', $this->Users);
 		$data['pagination'] = $this->pagination->create_links();
 		$data['users'] = $this->Users->get_paged_list($this->limit, $offset)->result();
 
@@ -103,7 +157,7 @@ class Admin extends CI_Controller {
 
 	public function transactions($offset = 0)
 	{
-		$this->initialize_pagination('welcome/transactions/', $this->Transactions);
+		$this->initialize_pagination('admin/transactions/', $this->Transactions);
 		$data['pagination'] = $this->pagination->create_links();
 		$data['transactions'] = $this->Transactions->get_paged_list($this->limit, $offset)->result();
 
@@ -113,7 +167,7 @@ class Admin extends CI_Controller {
 
 	public function trade_automates($offset = 0)
 	{
-		$this->initialize_pagination('welcome/trade_automates/', $this->TradeAutomates);
+		$this->initialize_pagination('admin/trade_automates/', $this->TradeAutomates);
 		$data['pagination'] = $this->pagination->create_links();
 		$data['trade_automates'] = $this->TradeAutomates->get_paged_list($this->limit, $offset)->result();
 
@@ -123,7 +177,7 @@ class Admin extends CI_Controller {
 	
 	public function trade_list($offset = 0)
 	{
-		$this->initialize_pagination('welcome/trade_list/', $this->TradeList);
+		$this->initialize_pagination('admin/trade_list/', $this->TradeList);
 		$data['pagination'] = $this->pagination->create_links();
 		$data['trade_list'] = $this->TradeList->get_paged_list($this->limit, $offset, '1', '1', 'or')->result();
 
@@ -133,7 +187,7 @@ class Admin extends CI_Controller {
 
 	public function tasks($offset = 0)
 	{
-		$this->initialize_pagination('welcome/tasks/', $this->Tasks);
+		$this->initialize_pagination('admin/tasks/', $this->Tasks);
 		$data['pagination'] = $this->pagination->create_links();
 		$data['tasks'] = $this->Tasks->get_paged_list($this->limit, $offset)->result();
 

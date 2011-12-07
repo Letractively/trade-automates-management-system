@@ -11,6 +11,9 @@
 					Список продуктів
 			</a>
 		</h1>
+		</br>
+		</br>
+		<a href="<?php echo base_url()?>index.php/admin/addProduct"><u>Add Product</u></a>
 	</header>
 		<p>
 			<div id = pagination>

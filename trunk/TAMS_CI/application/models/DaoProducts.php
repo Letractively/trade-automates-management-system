@@ -32,14 +32,14 @@ class DaoProducts extends CI_Model {
 		return $this->db->get($this->productTable);
 	}
 	
-	function save($person){
-		$this->db->insert($this->productTable, $person);
+	function save($product){
+		$this->db->insert($this->productTable, $product);
 		return $this->db->insert_id();
 	}
 	
-	function update($id, $person){
+	function update($id, $product){
 		$this->db->where('id', $id);
-		$this->db->update($this->productTable, $person);
+		$this->db->update($this->productTable, $product);
 	}
 	
 	function delete($id){
