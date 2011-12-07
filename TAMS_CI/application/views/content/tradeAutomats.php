@@ -57,7 +57,10 @@
 						echo '<th>', $item->IsWorking, '</th>';
 						echo '<th>', $item->NoGoods, '</th>';
 						echo '<th>', $item->FullCashStorage, '</th>';
-						echo '<th>', $item->Fault, '</th>';
+						echo '<th>', $item->Fault, '</th>';?>
+						<th> <a href="<?php echo base_url()?>/index.php/ta/details/
+						<?php echo $item->TradeAutomatID?>">details</a> </th>
+						<?php 
 						echo '</tr>';
 						
 			}
