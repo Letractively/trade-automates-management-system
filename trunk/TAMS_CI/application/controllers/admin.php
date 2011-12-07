@@ -77,7 +77,7 @@ class Admin extends CI_Controller {
 //		$data['pagination'] = $this->pagination->create_links();
 //		$data['products']  = $this->DaoProducts->get_paged_list($this->limit, $offset)->result();	
 		
-		$charDiv = $this->load->view( 'content/addProduct', $data , TRUE );
+		$charDiv = $this->load->view( 'content/addProduct', '' , TRUE );
 		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
 	}
 	
