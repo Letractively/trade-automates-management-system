@@ -38,6 +38,9 @@ class Ta extends CI_Controller {
 		$this->load->helper('url');
 
 		$this->load->model('TradeAutomates');
+		$this->load->model('Locations');
+		//$this->load->model('Status');
+		$this->load->model('Users');
 	}
 
 	public function initialize_pagination($page_name, $model, $uri_segment=3)
@@ -65,9 +68,16 @@ class Ta extends CI_Controller {
 		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
 	}
 
-	public function details()
+	public function details($taId=1)
 	{
+		$data['trade_automates'] = $this->TradeAutomates->get_by_id($taId)->result();
+		$data['owner'] = $this->Users->get_by_id($data['trade_automates'][0]->Owner)->result();
+		$data['location'] = $this->Locations->get_by_id($data['trade_automates'][0]->Location)->result();
+		$data['service'] = $this->Users->get_by_id($data['trade_automates'][0]->Service)->result();
+		//$data['status'] = $this->
 		
+		$charDiv = $this->load->view( 'content/taDetails', $data , TRUE );
+		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
 	}
 
 }
