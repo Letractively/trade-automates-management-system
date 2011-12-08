@@ -71,6 +71,8 @@ class Ta extends CI_Controller {
 	public function details($taId=1)
 	{
 		$data['trade_automates'] = $this->TradeAutomates->get_by_id($taId)->result();
+		$data['selling_list'] = $this->TradeAutomates->get_selling_list_by_ta_id($taId)->result();
+		$data['transactions'] = $this->TradeAutomates->get_all_ta_transactions($taId)->result();
 		$data['owner'] = $this->Users->get_by_id($data['trade_automates'][0]->Owner)->result();
 		$data['location'] = $this->Locations->get_by_id($data['trade_automates'][0]->Location)->result();
 		$data['service'] = $this->Users->get_by_id($data['trade_automates'][0]->Service)->result();
@@ -79,5 +81,10 @@ class Ta extends CI_Controller {
 		$charDiv = $this->load->view( 'content/taDetails', $data , TRUE );
 		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
 	}
-
+	
+	public function delete($taId=1)
+	{
+		$this->TradeAutomates->delete($taId)->result();
+		$this->index();
+	}
 }

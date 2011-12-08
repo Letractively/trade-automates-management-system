@@ -58,8 +58,12 @@
 						echo '<th>', $item->NoGoods, '</th>';
 						echo '<th>', $item->FullCashStorage, '</th>';
 						echo '<th>', $item->Fault, '</th>';?>
-						<th> <a href="<?php echo base_url()?>/index.php/ta/details/
-						<?php echo $item->TradeAutomatID?>">details</a> </th>
+						<th> <a title="details" href="<?php echo base_url()?>/index.php/ta/details/
+						<?php echo $item->TradeAutomatID?>"><img src="<?php echo base_url()?>resources/icons/details.png" />
+ 						</a></th>
+ 						<th> <a title="delete" href="<?php echo base_url()?>/index.php/ta/delete/
+						<?php echo $item->TradeAutomatID?>"><img src="<?php echo base_url()?>resources/icons/delete.png" />
+ 						</a></th>
 						<?php 
 						echo '</tr>';
 						

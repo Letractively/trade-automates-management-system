@@ -28,6 +28,17 @@
                 );
             });
         </script>
+
+<script
+	type="text/javascript"> </script>
+		<script type="text/javascript"> 
+			$(document).ready(function(){ 
+			$('.splLink').click(function(){ 
+			$(this).parent().children('div.splCont').toggle('normal');
+			 return false;
+			 });
+			 });
+ 		</script>
 </body>
 
 <?php }?>

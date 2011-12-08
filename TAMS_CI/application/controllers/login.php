@@ -23,8 +23,9 @@ class Login extends CI_Controller {
 		session_start();
 		$this->load->model('Roles');
 	}
-	public function index()
+	public function index($message=0)
 	{
+		$data['message'] = '';
 		//echo sha1('unreal');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('email_address', 'Email Address', 'required|valid_email');
@@ -50,10 +51,14 @@ class Login extends CI_Controller {
 			}
 			else
 			{
-				echo 'error: bad login or password';
+				$data['message'] = 'error: bad login or password';
 			}
 		}
-		$charDiv = $this->load->view( 'login_view', 'null' , TRUE );
+		if ($message == 1) {
+			$data['message'] = 'You are not allowed to enter this section, 
+			please login to use this';
+		}
+		$charDiv = $this->load->view( 'login_view', $data , TRUE );
 		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
 		//$this->load->view('login_view');
 	}

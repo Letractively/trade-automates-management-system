@@ -27,7 +27,7 @@ class Admin extends CI_Controller {
 
 		session_start();
 		if ( !isset($_SESSION['username'])) {
-			redirect('login');
+			redirect('login/index/1');
 		}
 
 		// load library

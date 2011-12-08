@@ -41,7 +41,7 @@
 <nav id=global>
     <ul>
         <li><a href="<?php echo base_url()?>">Головна</a></li>
-        <li><a href="#">Торгові автомати</a></li>
+        <li><a href="<?php echo base_url()?>index.php/ta">Торгові автомати</a></li>
         <li id=about >
 			<a href="#">Про нас</a>
 			<ul id=subMenu>
