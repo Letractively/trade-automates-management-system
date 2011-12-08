@@ -12,7 +12,7 @@
 | EXPLANATION OF VARIABLES
 | -------------------------------------------------------------------
 |
-|	['hostname'] The hostname of your database server.
+|	['hostname'] The hostname of your database server. 
 |	['username'] The username used to connect to the database
 |	['password'] The password used to connect to the database
 |	['database'] The name of the database you want to connect to
@@ -27,8 +27,7 @@
 |	['char_set'] The character set used in communicating with the database
 |	['dbcollat'] The character collation used in communicating with the database
 |				 NOTE: For MySQL and MySQLi databases, this setting is only used
-| 				 as a backup if your server is running PHP < 5.2.3 or MySQL < 5.0.7
-|				 (and in table creation queries made with DB Forge).
+| 				 as a backup if your server is running PHP < 5.2.3 or MySQL < 5.0.7.
 | 				 There is an incompatibility in PHP with mysql_real_escape_string() which
 | 				 can make your site vulnerable to SQL injection if you are using a
 | 				 multi-byte character set and are running versions lower than these.
@@ -50,7 +49,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '';
+$db['default']['password'] = 'ktv,thu';
 $db['default']['database'] = 'tams';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

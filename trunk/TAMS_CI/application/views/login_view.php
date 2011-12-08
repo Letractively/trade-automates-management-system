@@ -16,6 +16,9 @@
 			</a>
 		</h1>
 	</header>
+		<p style="color: red;"> 
+			<?php echo $message?>
+		</p>
 		<?php echo form_open('login'); ?>
 		<p>
 		<?php

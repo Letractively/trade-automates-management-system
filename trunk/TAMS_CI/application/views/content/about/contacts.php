@@ -17,6 +17,7 @@
 				<li>Scram master - 	<b>Roman Nazarevych</b> <i>(tams@gmail.com)</i>  
 				<li>Developer - 	<b>Yurij Volokh</b> <i>(tams@gmail.com)</i>
 				<li>Developer - 	<b>Taras Sich</b> <i>(tams@gmail.com)</i>
+				<li>Developer - 	<b>Hlib Belak</b> <i>(tams@gmail.com)</i>
 				<li>Tester - 		<b>Taras Chornyj</b> <i>(tams@gmail.com)</i>
 			</ul>
 		</p>
