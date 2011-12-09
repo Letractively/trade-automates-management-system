@@ -8,7 +8,7 @@
 		</time>
 		<h1>
 			<a href="#"  rel="bookmark">
-					All trade lists
+					Tasks
 			</a>
 		</h1>
 	</header>
@@ -58,6 +58,14 @@
 						echo '</tr>';
 						
 			}
+			
+			if($_SESSION['user']->Role <= 2)
+			{
+						echo '<tr>';
+						echo '<th colspan="5"><a href="', base_url(), 'index.php/add_task/index">+ Add New Task</a></th>';
+						echo '</tr>';
+			}
+			
 				?>
 				</tbody>
 				</table>

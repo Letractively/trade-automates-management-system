@@ -45,9 +45,8 @@
 
 <header class="mainH">
     <hgroup>
-        <h1>Система керування торговими автоматами</h1>
-        <h2>СКТА</h2>
-    </hgroup> 
+        <h1>Trade automates control and monitoring system</h1>
+    </hgroup>
 </header>
  
 <nav id=global>

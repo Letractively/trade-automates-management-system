@@ -1,6 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends CI_Controller 
+{
 
 	/**
 	 * 
@@ -27,7 +28,7 @@ class Admin extends CI_Controller {
 
 		session_start();
 		if ( !isset($_SESSION['username'])) {
-			redirect('login/index/1');
+			redirect('login');
 		}
 
 		// load library
@@ -81,7 +82,7 @@ class Admin extends CI_Controller {
 		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
 	}
 	
-function saveProduct()
+	function saveProduct()
 	{			
 		$this->form_validation->set_rules('name', 'Name', '');			
 		$this->form_validation->set_rules('description', 'Description', '');			
@@ -147,55 +148,122 @@ function saveProduct()
 	
 	public function users($offset = 0)
 	{
+		if ( !isset($_SESSION['username'])) {
+			redirect('login');
+		}
+	
 		$this->initialize_pagination('admin/users/', $this->Users);
 		$data['pagination'] = $this->pagination->create_links();
-		$data['users'] = $this->Users->get_paged_list($this->limit, $offset)->result();
+		
+		if($_SESSION['user']->Role <= 2)
+		{
+			$data['users'] = $this->Users->get_paged_list($this->limit, $offset)->result();
 
-		$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
-		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
+			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+		}
+		else
+		{
+			$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
+			$this->load->view('mainFrame', array( 'content' => "Only trade automates  owner can see this information") );
+		}
+
 	}
 
 	public function transactions($offset = 0)
 	{
+		if ( !isset($_SESSION['username']))
+		{
+			redirect('login');
+		}
+		
 		$this->initialize_pagination('admin/transactions/', $this->Transactions);
 		$data['pagination'] = $this->pagination->create_links();
-		$data['transactions'] = $this->Transactions->get_paged_list($this->limit, $offset)->result();
+		
+		if($_SESSION['user']->Role <= 2)
+		{
+			$data['transactions'] = $this->Transactions->get_paged_list($this->limit, $offset)->result();
 
-		$charDiv = $this->load->view( 'content/listTransactions', $data , TRUE );
-		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			$charDiv = $this->load->view( 'content/listTransactions', $data , TRUE );
+			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+		}
+		else
+		{
+			$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
+			$this->load->view('mainFrame', array( 'content' => "Only trade automates  owner can see this information") );
+		}
 	}
 
 	public function trade_automates($offset = 0)
 	{
+		if (!isset($_SESSION['username']))
+		{
+			redirect('login');
+		}
+		
+		$OwnerId="";
+		if($_SESSION['user']->Role == 2)
+		{
+			$OwnerId=$_SESSION['user']->id;
+		}
 		$this->initialize_pagination('admin/trade_automates/', $this->TradeAutomates);
 		$data['pagination'] = $this->pagination->create_links();
-		$data['trade_automates'] = $this->TradeAutomates->get_paged_list($this->limit, $offset)->result();
-
+		if($OwnerId != "")
+		{
+			$data['trade_automates'] = $this->TradeAutomates->list_all_by_owner($OwnerId, $this->limit, $offset)->result();
+		}
+		else
+		{
+			$data['trade_automates'] = $this->TradeAutomates->get_paged_list($this->limit, $offset)->result();
+		}
+			
 		$charDiv = $this->load->view( 'content/listTradeAutomates', $data , TRUE );
 		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
 	}
 	
 	public function trade_list($offset = 0)
 	{
+		if (!isset($_SESSION['username']))
+		{
+			redirect('login');
+		}
 		$this->initialize_pagination('admin/trade_list/', $this->TradeList);
 		$data['pagination'] = $this->pagination->create_links();
-		$data['trade_list'] = $this->TradeList->get_paged_list($this->limit, $offset, '1', '1', 'or')->result();
+		if($_SESSION['user']->Role <= 2)
+		{
+			$data['trade_list'] = $this->TradeList->get_paged_list($this->limit, $offset, '1', '1', 'or')->result();
 
-		$charDiv = $this->load->view( 'content/listTradeList', $data , TRUE );
-		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			$charDiv = $this->load->view('content/listTradeList', $data , TRUE );
+			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+		}
+		else
+		{
+			$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
+			$this->load->view('mainFrame', array( 'content' => "Only trade automates  owner can see this information") );
+		}
 	}
 
 	public function tasks($offset = 0)
 	{
-		$this->initialize_pagination('admin/tasks/', $this->Tasks);
-		$data['pagination'] = $this->pagination->create_links();
-		$data['tasks'] = $this->Tasks->get_paged_list($this->limit, $offset)->result();
-
-		$charDiv = $this->load->view( 'content/listTasks', $data , TRUE );
-		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			if ( !isset($_SESSION['username']))
+			{
+				redirect('login');
+			}
+			$this->initialize_pagination('admin/tasks/', $this->Tasks);
+			$data['pagination'] = $this->pagination->create_links();
+			
+			if($_SESSION['user']->Role <= 2)
+			{	
+				$data['tasks'] = $this->Tasks->get_paged_list($this->limit, $offset)->result();
+			}
+			else
+			{
+				$data['tasks'] = $this->Tasks->get_paged_list($this->limit, $offset, $_SESSION['user']->id)->result(); 
+			}
+			
+			$charDiv = $this->load->view( 'content/listTasks', $data , TRUE );
+			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
 	}
-
-	
 }
 
 /* End of file admin.php */

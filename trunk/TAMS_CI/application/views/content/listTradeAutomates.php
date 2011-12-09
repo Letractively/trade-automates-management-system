@@ -61,9 +61,18 @@
 						echo '</tr>';
 						
 			}
-				?>
-				</tbody>
-				</table>
+
+			if($_SESSION['user']->Role <= 2)
+			{
+						echo '<tr>';
+						echo '<th colspan="5"><a href="', base_url(), 'index.php/add_trade_automat/index">+ Add New Trade Automat</a></th>';
+						echo '</tr>';
+			}
+			
+			?>
+
+			</tbody>
+			</table>
 		</p>
 			
 
