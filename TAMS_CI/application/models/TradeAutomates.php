@@ -73,7 +73,7 @@ class TradeAutomates extends CI_Model {
 	 *
 	 * @author roman
 	 */
-	function list_all_by_owner ($owner,$column_name = 'id', $order='ASC',$limit = 15, $offset = 0 )
+	function list_all_by_owner ($owner, $limit = 10, $offset = 0, $column_name = 'id', $order='ASC')
 	{
 //		$this->db->where('Owner', $owner);
 //		return $this->db->get($this->TableName);
@@ -99,16 +99,14 @@ class TradeAutomates extends CI_Model {
 							tams.users
 							ON
 							tams.trade_automats.Owner = tams.users.id
-							INNER JOIN
+							LEFT OUTER JOIN
 							tams.location
 							ON
 							tams.trade_automats.Location = tams.location.id
-							INNER JOIN 
+							LEFT OUTER JOIN
 							tams.status
 							ON
 							tams.trade_automats.Status = tams.status.id
-
-
 							WHERE Owner=%s
 						ORDER BY `tams`.`trade_automats`.%s %s LIMIT 0%s OFFSET 0%s",
 
@@ -156,11 +154,11 @@ class TradeAutomates extends CI_Model {
 							tams.users
 							ON
 							tams.trade_automats.Owner = tams.users.id
-							INNER JOIN
+							LEFT OUTER JOIN
 							tams.location
 							ON
 							tams.trade_automats.Location = tams.location.id
-							INNER JOIN 
+							LEFT OUTER JOIN 
 							tams.status
 							ON
 							tams.trade_automats.Status = tams.status.id
@@ -172,7 +170,6 @@ class TradeAutomates extends CI_Model {
 		mysql_real_escape_string($order),
 		mysql_real_escape_string($limit),
 		mysql_real_escape_string($offset));
-		
 		return $this->db->query($query);
 	}
 	
@@ -207,13 +204,36 @@ class TradeAutomates extends CI_Model {
 		return $this->db->query($query);
 	}
 		
+	function TradeAutomatBelongToUser($UserID, $TradeAutomatID)
+	{
+		$query = sprintf("select * from trade_automats where Owner = %s and id = %s", 
+		mysql_real_escape_string($UserID),
+		mysql_real_escape_string($TradeAutomatID));
+		return $this->db->query($query);
+	}
+	
 	function delete($id)
 	{
 		$this->db->where('id', $id);
 		$this->db->delete($this->TableName);
 	}
 
-	// TODO: insert, update
+	function insert($id, $type, $Owner, $Service)
+	{
+		$query = sprintf("insert into trade_automats
+				  (id, type, Owner, Service, RegistrationDate)
+				  VALUES 
+				  (%s, '%s', %s, %s, NOW())",
+				  mysql_real_escape_string($id),
+				  mysql_real_escape_string($type),
+				  mysql_real_escape_string($Owner),
+				  mysql_real_escape_string($Service));
+		
+		return $this->db->query($query);
+
+	}
+
+	// TODO: update
 
 }
 ?>

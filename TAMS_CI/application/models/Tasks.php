@@ -66,11 +66,11 @@ class Tasks extends CI_Model {
 							trade_automats
 							ON 
 							tasks.TradeAutomatID=trade_automats.id
-							INNER JOIN 
+							LEFT OUTER JOIN 
 							location
 							ON
 							trade_automats.location=location.id
-							INNER JOIN 
+							LEFT OUTER JOIN 
 							users
 							ON
 							tasks.UserID = users.id
@@ -88,8 +88,8 @@ class Tasks extends CI_Model {
 	
 	function get_by_id($id)
 	{
-		$this->db->where('id', $id);
-		return $this->db->get($this->TableName);
+		$query = sprintf("select * from Tasks where id = %s", mysql_real_escape_string($id));
+		return $this->db->query($query);
 	}
 		
 	function delete($id)
@@ -97,7 +97,22 @@ class Tasks extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->delete($this->TableName);
 	}
+	
+	function insert($TradeAutomatID, $UserID, $Description)
+	{
+		$query = sprintf("insert into Tasks
+						 (TradeAutomatID, UserID, Description, CreationTime)
+						 VALUES
+						 (%s, %s, '%s', NOW())",
+						 mysql_real_escape_string($TradeAutomatID),
+						 mysql_real_escape_string($UserID),
+						 mysql_real_escape_string($Description));
+						 
+		return $this->db->query($query);
+	}
 
+
+	
 	// TODO: insert, update
 
 }
