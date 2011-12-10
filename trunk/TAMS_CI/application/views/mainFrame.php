@@ -10,8 +10,9 @@
 <body>
 <ul id="navigation">
 	 <li class="home"><a title="Personal Cabinet" 
-	 href="<?php echo base_url()?>index.php/pcab"> </a></li>
-	 <li class="top"><a title="Top Seller"></a></li>
+	 	href="<?php echo base_url()?>index.php/pcab"> </a></li>
+	 <li class="top"><a title="Top Seller"
+	 	href="<?php echo base_url()?>index.php/top"></a></li>
 	 <li class="search"><a title="Search"></a></li>
 	</ul>
 
