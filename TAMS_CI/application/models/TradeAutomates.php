@@ -13,6 +13,24 @@ class TradeAutomates extends CI_Model {
 		return $this->db->get($this->TableName);
 	}
 	
+	function get_top_ta($quantity) {
+		$query = sprintf("select 
+								tams.trade_automats.id as 'id',
+								tams.trade_automats.Type,
+								tams.trade_automats.SellAmount,
+                				tams.users.Name as 'Owner'
+								FROM tams.trade_automats
+                    		INNER JOIN
+                    			tams.users
+                    			ON
+                    			tams.trade_automats.Owner = tams.users.id
+								ORDER BY tams.trade_automats.SellAmount DESC LIMIT %s
+		
+		
+		", mysql_real_escape_string($quantity));
+		
+		return $this->db->query($query);
+	}
 	function get_selling_list_by_ta_id($id) {
 		$query = sprintf("select 
 								tams.trade_automats.id as 'id',
