@@ -38,8 +38,13 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$charDiv = $this->load->view( 'content/index', '' , TRUE );
-		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view('content/index');
+		}
+		else{
+			$charDiv = $this->load->view( 'content/index', '' , TRUE );
+			$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
 	
 }

@@ -43,8 +43,13 @@ class Top extends CI_Controller {
 	{
 		$data['products_top'] = $this->DaoProducts->get_best_selling_products($this->limit)->result();
 		$data['ta_top'] = $this->TradeAutomates->get_top_ta($this->limit)->result();
-		$charDiv = $this->load->view( 'content/topView', $data , TRUE );
-		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/topView', $data);
+		}
+		else{
+			$charDiv = $this->load->view( 'content/topView', $data , TRUE );
+			$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
 	
 	

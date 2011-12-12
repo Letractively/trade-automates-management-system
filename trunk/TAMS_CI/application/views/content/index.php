@@ -4,7 +4,7 @@
 <span>Лис</span>
 15
 </time>
-<h1><a href="#" title="Заголовок" rel="bookmark"> Заголовок
+<h1><a href="index.php/about/test"  id="task" title="Заголовок" rel="bookmark"> Заголовок
 новини </a></h1>
 </header>
 <p>Тіло новини (сюди поміщається основна інформація)</p>

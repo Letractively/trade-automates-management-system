@@ -187,7 +187,7 @@
 		-webkit-border-radius: 0 0 3px 3px;
 		border-radius: 0 0 3px 3px;
 	}
-	#login a{
+	#login a,#logout a{
 	text-align: center;
 	-moz-box-shadow: -1px 0 0 #444;
 	-webkit-box-shadow: -1px 0 0 #444;

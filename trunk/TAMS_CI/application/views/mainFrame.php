@@ -3,7 +3,8 @@
 <LINK REL=StyleSheet HREF="<?php echo base_url()?>resources/styles.css" TYPE="text/css" MEDIA=screen>
 <LINK REL=StyleSheet HREF="<?php echo base_url()?>resources/navStyle.css" TYPE="text/css" MEDIA=screen>
 <LINK REL=StyleSheet HREF="<?php echo base_url()?>resources/navigation.css" TYPE="text/css" MEDIA=screen>
-<script type="text/javascript" src="<?php echo base_url()?>resources/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>resources/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>resources/ajax.js"></script>
 
 <?php //session_start();
 		if ( isset($_SESSION['username'])) {?>
@@ -54,27 +55,27 @@
 
 <nav id=top>
     <ul id="menu">
-        <li><a href="<?php echo base_url()?>" class="topLink">Головна</a></li>
-        <li><a href="<?php echo base_url()?>index.php/ta" class="topLink">Торгові автомати</a></li>
+        <li><a class="nav" href="<?php echo base_url()?>" class="topLink">Головна</a></li>
+        <li><a class="nav" href="<?php echo base_url()?>index.php/ta" class="topLink">Торгові автомати</a></li>
         <li id=about >
 			<a href="#" class="topLink">Про нас</a>
 			<ul id=subMenu>
-					<li><a href="<?php echo base_url()?>index.php/about">Про нас</a></li>
-					<li><a href="<?php echo base_url()?>index.php/about/contacts">Контакти</a></li>
-					<li><a href="<?php echo base_url()?>index.php/about/feedback">Зворотній звязок</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/about">Про нас</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/about/contacts">Контакти</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/about/feedback">Зворотній звязок</a></li>
 				</ul>
 		</li>
 		<li id=about >
 			<a href="#" class="topLink">All</a>
 			<ul id=subMenu >
-					<li><a href="<?php echo base_url()?>index.php/admin/test">productslist</a></li>
-					<li><a href="<?php echo base_url()?>index.php/admin/Locations">Locations</a></li>
-					<li><a href="<?php echo base_url()?>index.php/admin/Roles">Roles</a></li>
-					<li><a href="<?php echo base_url()?>index.php/admin/Users">Users</a></li>
-					<li><a href="<?php echo base_url()?>index.php/admin/Transactions">Transactions</a></li>
-					<li><a href="<?php echo base_url()?>index.php/admin/trade_automates">Trade Automates</a></li>
-					<li><a href="<?php echo base_url()?>index.php/admin/trade_list">Trade List</a></li>
-					<li><a href="<?php echo base_url()?>index.php/admin/tasks">Tasks</a>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/admin/test">productslist</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/admin/Locations">Locations</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/admin/Roles">Roles</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/admin/Users">Users</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/admin/Transactions">Transactions</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/admin/trade_automates">Trade Automates</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/admin/trade_list">Trade List</a></li>
+					<li><a class="nav" href="<?php echo base_url()?>index.php/admin/tasks">Tasks</a>
 						<ul>
 							<li><a href="">Add new task</a></li>
 						</ul>
@@ -87,7 +88,7 @@
 			'index.php/login " class="topLink">Увійти</a></li>';
 		}
 		else {
-			echo '<li id=login ><a href="', base_url(), 
+			echo '<li id=logout ><a href="', base_url(), 
 			'index.php/login/logout " class="topLink">Вийти</a></li>';
 		}
 		?>
@@ -95,7 +96,6 @@
 </nav>
  
 <div id=content>
-
 	<?php echo $content;?>
 </div>
  
