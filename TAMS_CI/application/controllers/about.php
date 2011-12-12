@@ -38,20 +38,34 @@ class About extends CI_Controller {
 
 	public function index()
 	{
-		$charDiv = $this->load->view( 'content/about/about', 'null' , TRUE );
-		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/about/about');
+		}
+		else{
+			$charDiv = $this->load->view( 'content/about/about', 'null' , TRUE );
+			$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
-	
 	public function contacts()
 	{
-		$charDiv = $this->load->view( 'content/about/contacts', 'null' , TRUE );
-		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/about/contacts');
+		}
+		else{
+			$charDiv = $this->load->view( 'content/about/contacts', 'null' , TRUE );
+			$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
 	
 	public function feedback()
 	{
-		$charDiv = $this->load->view( 'content/about/feedback', 'null' , TRUE );
-		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/about/feedback');
+		}
+		else{
+			$charDiv = $this->load->view( 'content/about/feedback', 'null' , TRUE );
+			$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
 	
 }

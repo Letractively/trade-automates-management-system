@@ -64,8 +64,13 @@ class Ta extends CI_Controller {
 		$data['pagination'] = $this->pagination->create_links();
 		$data['trade_automates'] = $this->TradeAutomates->list_all_by_owner($_SESSION['user']->id)->result();
 		
-		$charDiv = $this->load->view( 'content/tradeAutomats', $data , TRUE );
-		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/tradeAutomats', $data);
+		}
+		else{
+			$charDiv = $this->load->view( 'content/tradeAutomats', $data , TRUE );
+			$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
 
 	public function details($taId=1)
@@ -78,8 +83,13 @@ class Ta extends CI_Controller {
 		$data['service'] = $this->Users->get_by_id($data['trade_automates'][0]->Service)->result();
 		//$data['status'] = $this->
 		
-		$charDiv = $this->load->view( 'content/taDetails', $data , TRUE );
-		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/taDetails', $data);
+		}
+		else{
+			$charDiv = $this->load->view( 'content/taDetails', $data , TRUE );
+			$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
 	
 	public function delete($taId=1)

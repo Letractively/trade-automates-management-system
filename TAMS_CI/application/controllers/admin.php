@@ -69,8 +69,13 @@ class Admin extends CI_Controller
 		$data['pagination'] = $this->pagination->create_links();
 		$data['products']  = $this->DaoProducts->get_paged_list($this->limit, $offset)->result();	
 		
+		if (IS_AJAX) {
+			 $this->load->view( 'content/listProducts', $data );
+		}
+		else{
 		$charDiv = $this->load->view( 'content/listProducts', $data , TRUE );
 		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
 	public function addProduct($offset = 0) 
 	{
@@ -78,8 +83,13 @@ class Admin extends CI_Controller
 //		$data['pagination'] = $this->pagination->create_links();
 //		$data['products']  = $this->DaoProducts->get_paged_list($this->limit, $offset)->result();	
 		
+		if (IS_AJAX) {
+			 $this->load->view( 'content/addProduct');
+		}
+		else{
 		$charDiv = $this->load->view( 'content/addProduct', '' , TRUE );
 		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
 	
 	function saveProduct()
@@ -132,8 +142,13 @@ class Admin extends CI_Controller
 		$data['pagination'] = $this->pagination->create_links();
 		$data['locations'] = $this->Locations->get_paged_list($this->limit, $offset)->result();
 
-		$charDiv = $this->load->view( 'content/listLocations', $data , TRUE );
-		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/listLocations',$data);
+		}
+		else{
+			$charDiv = $this->load->view( 'content/listLocations', $data , TRUE );
+			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+		}
 	}
 	
 	public function roles($offset = 0)
@@ -142,8 +157,13 @@ class Admin extends CI_Controller
 		$data['pagination'] = $this->pagination->create_links();
 		$data['roles'] = $this->Roles->get_paged_list($this->limit, $offset)->result();
 
-		$charDiv = $this->load->view( 'content/listRoles', $data , TRUE );
-		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/listRoles',$data);
+		}
+		else{
+			$charDiv = $this->load->view( 'content/listRoles', $data , TRUE );
+			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+		}
 	}
 	
 	public function users($offset = 0)
@@ -159,13 +179,23 @@ class Admin extends CI_Controller
 		{
 			$data['users'] = $this->Users->get_paged_list($this->limit, $offset)->result();
 
-			$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
-			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			if (IS_AJAX) {
+			 $this->load->view( 'content/listUsers',$data);
+			}
+			else{
+				$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
+				$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			}
 		}
 		else
 		{
-			$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
-			$this->load->view('mainFrame', array( 'content' => "Only trade automates  owner can see this information") );
+			if (IS_AJAX) {
+			 $this->load->view( 'content/listUsers',$data);
+			}
+			else{
+				$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
+				$this->load->view('mainFrame', array( 'content' => "Only trade automates  owner can see this information") );
+			}
 		}
 
 	}
@@ -184,13 +214,23 @@ class Admin extends CI_Controller
 		{
 			$data['transactions'] = $this->Transactions->get_paged_list($this->limit, $offset)->result();
 
-			$charDiv = $this->load->view( 'content/listTransactions', $data , TRUE );
-			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			if (IS_AJAX) {
+			 $this->load->view( 'content/listTransactions',$data);
+			}
+			else{
+				$charDiv = $this->load->view( 'content/listTransactions', $data , TRUE );
+				$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			}
 		}
 		else
 		{
-			$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
-			$this->load->view('mainFrame', array( 'content' => "Only trade automates  owner can see this information") );
+			if (IS_AJAX) {
+			 echo "Only trade automates  owner can see this information";
+			}
+			else{
+				$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
+				$this->load->view('mainFrame', array( 'content' => "Only trade automates  owner can see this information") );
+			}
 		}
 	}
 
@@ -216,9 +256,13 @@ class Admin extends CI_Controller
 		{
 			$data['trade_automates'] = $this->TradeAutomates->get_paged_list($this->limit, $offset)->result();
 		}
-			
-		$charDiv = $this->load->view( 'content/listTradeAutomates', $data , TRUE );
-		$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/listTradeAutomates',$data);
+			}
+			else{			
+				$charDiv = $this->load->view( 'content/listTradeAutomates', $data , TRUE );
+				$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			}
 	}
 	
 	public function trade_list($offset = 0)
@@ -233,13 +277,23 @@ class Admin extends CI_Controller
 		{
 			$data['trade_list'] = $this->TradeList->get_paged_list($this->limit, $offset, '1', '1', 'or')->result();
 
-			$charDiv = $this->load->view('content/listTradeList', $data , TRUE );
-			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			if (IS_AJAX) {
+			 $this->load->view( 'content/listTradeList',$data);
+			}
+			else{
+				$charDiv = $this->load->view('content/listTradeList', $data , TRUE );
+				$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			}
 		}
 		else
 		{
-			$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
-			$this->load->view('mainFrame', array( 'content' => "Only trade automates  owner can see this information") );
+			if (IS_AJAX) {
+			 echo "Only trade automates  owner can see this information";
+			}
+			else{
+				$charDiv = $this->load->view( 'content/listUsers', $data , TRUE );
+				$this->load->view('mainFrame', array( 'content' => "Only trade automates  owner can see this information") );
+			}
 		}
 	}
 
@@ -261,8 +315,13 @@ class Admin extends CI_Controller
 				$data['tasks'] = $this->Tasks->get_paged_list($this->limit, $offset, $_SESSION['user']->id)->result(); 
 			}
 			
-			$charDiv = $this->load->view( 'content/listTasks', $data , TRUE );
-			$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			if (IS_AJAX) {
+			 $this->load->view( 'content/listTradeList',$data);
+			}
+			else{
+				$charDiv = $this->load->view( 'content/listTasks', $data , TRUE );
+				$this->load->view('mainFrame', array( 'content' => $charDiv ) );
+			}
 	}
 }
 

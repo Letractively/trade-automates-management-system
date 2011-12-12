@@ -45,8 +45,13 @@ class Pcab extends CI_Controller {
 		$data['user'] = $this->Users->get_by_id($_SESSION['user']->id)->result();
 		$data['role'] = $this->Roles->get_by_id($data['user'][0]->Role)->result();
 		$data['ta'] = $this->TradeAutomates->list_all_by_owner($data['user'][0]->id)->result();
-		$charDiv = $this->load->view( 'content/profile', $data , TRUE );
-		$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		if (IS_AJAX) {
+			 $this->load->view( 'content/profile', $data);
+		}
+		else{
+			$charDiv = $this->load->view( 'content/profile', $data , TRUE );
+			$this->load->view( 'mainFrame', array('content' => $charDiv ) );
+		}
 	}
 	
 	
